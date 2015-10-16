@@ -1,7 +1,7 @@
 package Pod::Weaver::PluginBundle::Author::BBYRD;
 
 our $AUTHORITY = 'cpan:BBYRD'; # AUTHORITY
-our $VERSION = '1.04'; # VERSION
+our $VERSION = '1.06'; # VERSION
 # ABSTRACT: Pod::Weaver Author Bundle for BBYRD
 
 use sanity;
@@ -206,7 +206,7 @@ Brendan Byrd <BBYRD@CPAN.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2014 by Brendan Byrd.
+This software is Copyright (c) 2015 by Brendan Byrd.
 
 This is free software, licensed under:
 

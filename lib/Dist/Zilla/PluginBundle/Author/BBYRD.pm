@@ -1,17 +1,18 @@
 package Dist::Zilla::PluginBundle::Author::BBYRD;
 
 our $AUTHORITY = 'cpan:BBYRD'; # AUTHORITY
-our $VERSION = '1.04'; # VERSION
+our $VERSION = '1.06'; # VERSION
 # ABSTRACT: DZIL Author Bundle for BBYRD
 
-use sanity;
 use Moose;
+
+use sanity;
 
 with 'Dist::Zilla::Role::PluginBundle::Merged' => {
    mv_plugins => [ qw(
       Git::GatherDir OurPkgVersion PodWeaver Test::ReportPrereqs @TestingMania
       PruneCruft @Prereqs CheckPrereqsIndexed MetaNoIndex CopyFilesFromBuild
-      Git::CheckFor::CorrectBranch @Git TravisYML
+      Git::CheckFor::CorrectBranch @Git TravisYML Test::EOL
    ) ],
 };
 with 'Dist::Zilla::Role::PluginBundle::PluginRemover';
@@ -55,13 +56,15 @@ sub configure {
       # [PruneCruft]
       #
       # ; Extra file creation
-      # [GitFmtChanges]
-      # log_format = [%h]%n* Author: %an <%ae>%n* Date:   %ai (%ar)%n%n%B
-      #
-      $self->config_short_merge('GitFmtChanges', {
-         log_format => '[%h]%n* Author: %an <%ae>%n* Date:   %ai (%ar)%n%n%B',
+      # [ChangelogFromGit::CPAN::Changes]
+      # file_name = CHANGES
+      # copy_to_root = 0
+      $self->config_short_merge('ChangelogFromGit::CPAN::Changes' => {
+         file_name    => 'CHANGES',
+         copy_to_root => 0,
       }),
 
+      #
       # [ManifestSkip]
       # [Manifest]
       # [License]
@@ -289,8 +292,9 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [PruneCruft]
  
     ; Extra file creation
-    [GitFmtChanges]
-    log_format = [%h]%n* Author: %an <%ae>%n* Date:   %ai (%ar)%n%n%B
+    [ChangelogFromGit::CPAN::Changes]
+    file_name = CHANGES
+    copy_to_root = 0
  
     [ManifestSkip]
     [Manifest]
@@ -486,7 +490,7 @@ Sergey Romanov <complefor@rambler.ru>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2014 by Brendan Byrd.
+This software is Copyright (c) 2015 by Brendan Byrd.
 
 This is free software, licensed under:
 

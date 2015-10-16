@@ -1,7 +1,7 @@
 package Dist::Zilla::MintingProfile::Author::BBYRD;
 
 our $AUTHORITY = 'cpan:BBYRD'; # AUTHORITY
-our $VERSION = '1.04'; # VERSION
+our $VERSION = '1.06'; # VERSION
 # ABSTRACT: DZIL MintingProfile for BBYRD
 
 use sanity;
@@ -58,7 +58,7 @@ Brendan Byrd <BBYRD@CPAN.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2014 by Brendan Byrd.
+This software is Copyright (c) 2015 by Brendan Byrd.
 
 This is free software, licensed under:
 
